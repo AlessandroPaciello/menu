@@ -1,0 +1,22 @@
+{
+"moresco": {
+    "category": [
+            {
+                "voce 1": "prima voce"
+            },
+            {
+                "voce 2": "seconda voce"
+            },
+            {
+                "voce 3": "terza voce"
+            },
+            {
+                "voce 4": "quarta voce"
+            },
+            {
+                "voce 5": "quinta voce"
+            }
+        ]      
+
+    }
+}
