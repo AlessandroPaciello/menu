@@ -8,7 +8,6 @@ let status = false;
 
 function preload() {
     list = select(".list");
-    
     header = select(".header");
 
     //crea e assegna il div header
