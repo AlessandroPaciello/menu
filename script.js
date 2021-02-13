@@ -1,14 +1,18 @@
 let myPromise;
-let category;
-let divCategory = [];
+let divCategory = {
+    list : [],
+    height: 50,
+};
 let list;
 let header;
 let status = false;
+let list_height;
+let distance;
 
 
 function preload() {
-    list = select(".list");
-    header = select(".header");
+    list= select("#id_list");
+    header = select("#id_header");
 
     //crea e assegna il div header
     let header_element = createDiv("header").class("header_element");
@@ -19,7 +23,7 @@ function preload() {
         fetch("./menu.json").then(response => {
             return response.json();
         }).then(data => {
-            res(category = data.moresco.category);
+            res(data.moresco.category);
         })
     })
 };
@@ -28,56 +32,56 @@ async function setup() {
     noCanvas();
 
     //aspetta il caricemento del file json per creare i diversi elementi
-    await myPromise.then(() => {
-        category.forEach((el, i) => {
-            let n_el = i + 1;
-            let div = createDiv(Object.keys(el)).id("id_list_element_" + n_el).class("list_element");
+    await myPromise.then((res) => {
+        for (i = 0; i < res.length; i++) {
+            let n = i + 1;
+            let div = createDiv(Object.keys(res[i])).id("id_list_element_" + n).class("list_element");
             list.child(div);
-            divCategory.push(div);
-            status = true;
-        });
-        
+            divCategory.list[i] = div;
+        };
+        status = true;
     });
     
 };
 
 function draw() {
     if(status) {
-        set_element(divCategory);
+        set_element(divCategory.list);
     }
-};
+}
+
+function windowResized() {
+}
 
 
 function set_element(listElement) {
-    let element = document.getElementById("id_list_element_1").clientHeight;
-    let height_list = document.getElementById("id_list");
-    let distance;
-    let width_list = (windowWidth * 80) / 100;
-    list.style("height", windowHeight - document.getElementById("id_header").clientHeight + "px");
 
-    distance = (height_list.clientHeight / listElement.length) - element;
+    list_height = windowHeight - header.elt.clientHeight;
+    distance = (list_height / listElement.length) - divCategory.height;
 
-    
-    for (i = 0; i < listElement.length; i++) {
-        listElement[i].style("padding-left", width_list / 2 + "px");
-        listElement[i].style("padding-right", width_list / 2 + "px");
-        listElement[i].style("margin-top", distance / 2 + "px");
-        listElement[i].style("margin-bottom", distance / 2 + "px");
-    };
+
+    listElement.forEach(el => {
+        if(el.hasClass("list_element")) {
+            el.style("padding-top", 3 + "vh");
+            el.style("padding-bottom", 3 + "vh");
+        }else{
+            el.style("padding-top", 60 + "vh");
+        }
+        el.style("margin-top", distance / 2 + "px");
+        el.style("margin-bottom", distance / 2 + "px");
+    });
     
 };
 
 
-function mousePressed(event) {
-    divCategory.forEach(el => {
+function mouseClicked(event) {
+    divCategory.list.forEach(el => {
         if(event.target.id === el.elt.id){
             el.toggleClass("list_element");
             el.toggleClass("open_list");
         }
-
     });
-
-}
+};
 
 
 
