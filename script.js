@@ -40,33 +40,28 @@ async function setup() {
             divCategory.list[i] = div;
         };
         status = true;
+        set_element(divCategory.list);
     });
     
 };
 
 function draw() {
-    if(status) {
-        set_element(divCategory.list);
-    }
 }
 
 function windowResized() {
+    set_element(divCategory.list);
 }
 
 
 function set_element(listElement) {
-
     list_height = windowHeight - header.elt.clientHeight;
+
+    list.style("height", list_height + "px");
+    list.style("width", windowWidth + "px");
     distance = (list_height / listElement.length) - divCategory.height;
 
 
     listElement.forEach(el => {
-        if(el.hasClass("list_element")) {
-            el.style("padding-top", 3 + "vh");
-            el.style("padding-bottom", 3 + "vh");
-        }else{
-            el.style("padding-top", 60 + "vh");
-        }
         el.style("margin-top", distance / 2 + "px");
         el.style("margin-bottom", distance / 2 + "px");
     });

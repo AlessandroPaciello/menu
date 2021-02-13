@@ -11,10 +11,7 @@ body {
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
 }
 
 .list_element {
@@ -24,6 +21,10 @@ body {
                  -5px -5px 10px #384548;
     color: #D97D0D;
     text-align: center;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    margin-right: 4vh;
+    margin-left: 4vh;
 }
 
 .open_list {
@@ -33,6 +34,9 @@ body {
                 inset -5px -5px 10px #384548;
     color: #D97D0D;
     text-align: center;
+    padding-top: 60vh;
+    margin-right: 4vh;
+    margin-left: 4vh;
 }
 
 .header {
