@@ -69,12 +69,22 @@ function set_element(listElement) {
 
 
 function mouseClicked(event) {
+    let padding = (list_height * 80) / 100;
     divCategory.list.forEach(el => {
         if(event.target.id === el.elt.id){
             el.toggleClass("list_element");
             el.toggleClass("open_list");
-        }else {
+        }else{
             el.hide()
+        }
+        if (event.target.classList[0] === "open_list"){
+            el.style("padding-top", padding / 2 + "px")
+            el.style("padding-bottom", padding / 2 + "px")
+        }
+        else {
+
+            el.style("padding-top", 3 + "vh")
+            el.style("padding-bottom", 3 + "vh")
         }
     });
 };
