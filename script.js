@@ -45,6 +45,7 @@ async function setup() {
 };
 
 function draw() {
+    
 }
 
 function windowResized() {
@@ -72,6 +73,8 @@ function mouseClicked(event) {
         if(event.target.id === el.elt.id){
             el.toggleClass("list_element");
             el.toggleClass("open_list");
+        }else {
+            el.hide()
         }
     });
 };
