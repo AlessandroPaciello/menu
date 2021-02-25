@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Roboto';
-    background-color: #323E40;
+    background-color: #F2F2F2;
 }
 
 .list {
@@ -16,36 +16,41 @@ body {
 
 .list_element {
     border-radius: 15px;
-    background: #323E40;
-    box-shadow:  5px 5px 10px #2c3738,
-                 -5px -5px 10px #384548;
-    color: #D97D0D;
+    background: #F2F2F2;
+    box-shadow:  5px 5px 10px #cecece,
+                 -5px -5px 10px #ffffff;
+    color: #D9072D;
     text-align: center;
+    transition: padding-bottom 2s, padding-top 2s;
     padding-top: 3vh;
     padding-bottom: 3vh;
     margin-right: 4vh;
     margin-left: 4vh;
+    
 }
 
 .open_list {
     border-radius: 15px;
-    background: #323E40;
-    box-shadow: inset 5px 5px 10px #2c3738,
-                inset -5px -5px 10px #384548;
-    color: #D97D0D;
+    background: #F2F2F2;
+    box-shadow: inset 5px 5px 10px #cecece,
+                inset -5px -5px 10px #ffffff;
+    color: #D9072D;
     text-align: center;
-    padding-top: 60vh;
+    transition: padding-bottom 2s, padding-top 2s;
+    padding-top: 55%;
+    padding-bottom: 55%;
     margin-right: 4vh;
     margin-left: 4vh;
+    
 }
 
 .header {
     position: sticky;
     text-align: center;
-    color: #D97D0D;
-    background: #323E40;
-    box-shadow:  5px 5px 10px #2c3738,
-                -5px -5px 10px #384548;
+    color: #D9072D;
+    background: #F2F2F2;
+    box-shadow:  5px 5px 10px #cecece,
+                -5px -5px 10px #ffffff;
     padding-top: 3vh;
     padding-bottom: 3vh;
 }

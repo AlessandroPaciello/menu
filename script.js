@@ -1,7 +1,6 @@
 let myPromise;
 let divCategory = {
     list : [],
-    height: 50,
 };
 let list;
 let header;
@@ -58,12 +57,11 @@ function set_element(listElement) {
 
     list.style("height", list_height + "px");
     list.style("width", windowWidth + "px");
-    distance = (list_height / listElement.length) - divCategory.height;
+    distance = (list_height / listElement.length);
 
 
     listElement.forEach(el => {
         el.style("margin-top", distance / 2 + "px");
-        el.style("margin-bottom", distance / 2 + "px");
     });
     
 };
