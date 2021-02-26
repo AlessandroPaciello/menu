@@ -79,18 +79,10 @@ function mouseClicked(event) {
   var padding = list_height * 75 / 100;
   divCategory.list.forEach(function (el) {
     if (event.target.id === el.elt.id) {
-      el.toggleClass("open_list");
-      el.toggleClass("list_element");
-
-      if (el.elt.className === "open_list") {
-        el.style("padding-top", padding / 2 + "px");
-        el.style("padding-bottom", padding / 2 + "px");
-      } else {
-        el.style("padding-top", 3 + "vh");
-        el.style("padding-bottom", 3 + "vh");
-      }
-
-      ;
+      el.addClass("open_list");
+      el.removeClass("list_element");
+      el.style("padding-top", padding / 2 + "px");
+      el.style("padding-bottom", padding / 2 + "px");
     } else {
       el.hide();
     }
@@ -107,6 +99,14 @@ function mouseClicked(event) {
 
 function showElement() {
   divCategory.list.forEach(function (el) {
+    if (el.elt.className === "open_list") {
+      el.removeClass("open_list");
+      el.addClass("list_element");
+      el.style("padding-top", 3 + "vh");
+      el.style("padding-bottom", 3 + "vh");
+    }
+
+    ;
     el.show();
   });
 }
