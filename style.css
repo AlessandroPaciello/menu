@@ -22,12 +22,11 @@ body {
                  -5px -5px 10px #ffffff;
     color: #D9072D;
     text-align: center;
-    transition: padding-bottom 2s, padding-top 2s;
     padding-top: 3vh;
     padding-bottom: 3vh;
     margin-right: 4vh;
     margin-left: 4vh;
-    
+    transition: padding-bottom 2s, padding-top 2s;
 }
 
 .open_list {
@@ -40,11 +39,9 @@ body {
     transition: padding-bottom 2s, padding-top 2s;
     margin-right: 4vh;
     margin-left: 4vh;
-    
 }
 
 .header {
-    position: sticky;
     text-align: center;
     color: #D9072D;
     background: #F2F2F2;

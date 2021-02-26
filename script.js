@@ -4,7 +4,6 @@ let divCategory = {
 };
 let list;
 let header;
-let status = false;
 let list_height;
 let distance;
 
@@ -14,7 +13,7 @@ function preload() {
     header = select("#id_header");
 
     //crea e assegna il div header
-    let header_element = createDiv("header").class("header_element");
+    let header_element = createDiv("header").class("header_element").id("id_header");
     header.child(header_element);
 
     //viene creata una promise per caricare il file json
@@ -38,11 +37,12 @@ async function setup() {
             list.child(div);
             divCategory.list[i] = div;
         };
-        status = true;
+
         set_element(divCategory.list);
     });
     
 };
+
 
 function draw() {
     
@@ -69,25 +69,42 @@ function set_element(listElement) {
 
 
 function mouseClicked(event) {
-    let padding = (list_height * 80) / 100;
+    let padding = (list_height * 75) / 100;
+
+
     divCategory.list.forEach(el => {
         if(event.target.id === el.elt.id){
-            el.toggleClass("list_element");
             el.toggleClass("open_list");
-        }else{
-            el.hide()
-        }
-        if (event.target.classList[0] === "open_list"){
-            el.style("padding-top", padding / 2 + "px")
-            el.style("padding-bottom", padding / 2 + "px")
-        }
-        else {
+            el.toggleClass("list_element");
 
-            el.style("padding-top", 3 + "vh")
-            el.style("padding-bottom", 3 + "vh")
-        }
+            if (el.elt.className === "open_list") {
+                el.style("padding-top", padding / 2 + "px")
+                el.style("padding-bottom", padding / 2 + "px");
+            }
+            else {
+                el.style("padding-top", 3 + "vh")
+                el.style("padding-bottom", 3 + "vh");
+            };
+        } 
+        else{
+            el.hide()
+        };
+    // chiusura foreach
     });
+
+    if (event.target.id === "id_header") {
+        showElement();
+    }
 };
+
+function showElement() {
+    divCategory.list.forEach(el => {
+        el.show()
+    })
+}
+
+
+
 
 
 
