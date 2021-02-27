@@ -33,7 +33,7 @@ async function setup() {
     await myPromise.then((res) => {
         for (i = 0; i < res.length; i++) {
             let n = i + 1;
-            let div = createDiv(Object.keys(res[i])).id("id_list_element_" + n).class("list_element");
+            let div = createDiv(Object.keys(res[i])).id("id_list_element_" + n).class("list_element").addClass("show");
             list.child(div);
             divCategory.list[i] = div;
         };
@@ -71,35 +71,43 @@ function set_element(listElement) {
 function mouseClicked(event) {
     let padding = (list_height * 75) / 100;
 
-
-    divCategory.list.forEach(el => {
-        if(event.target.id === el.elt.id){
-            el.addClass("open_list");
-            el.removeClass("list_element");
-            el.style("padding-top", padding / 2 + "px")
-            el.style("padding-bottom", padding / 2 + "px");
-        } 
-        else{
-            el.hide()
-        };
-    // chiusura foreach
-    });
-
     if (event.target.id === "id_header") {
         showElement();
     }
+    else {
+        divCategory.list.forEach(el => {
+            if(event.target.id === el.elt.id){
+                el.addClass("open_list");
+                el.removeClass("list_element");
+                el.style("padding-top", padding / 2 + "px")
+                el.style("padding-bottom", padding / 2 + "px");
+            }
+            else if(divCategory.list.includes(el)){
+                el.removeClass("show");
+                el.addClass("hide");
+            }
+            // chiusura foreach
+        });
+    }
+   
+
+    
 };
 
 function showElement() {
     divCategory.list.forEach(el => {
-        if(el.elt.className === "open_list") {
+        if(el.hasClass("open_list")) {
             el.removeClass("open_list");
             el.addClass("list_element");
 
             el.style("padding-top", 3 + "vh")
             el.style("padding-bottom", 3 + "vh");
-        };
-        el.show();
+        }
+        else{
+            el.removeClass("hide");
+            el.addClass("show");
+        }
+        
     })
 }
 

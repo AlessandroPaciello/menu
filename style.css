@@ -50,3 +50,12 @@ body {
     padding-top: 3vh;
     padding-bottom: 3vh;
 }
+
+
+.hide {
+    display: none;
+}
+
+.show{
+    display: block;
+}
