@@ -103,6 +103,7 @@ function showElement() {
         else{
             el.removeClass("hide");
             el.addClass("show");
+            setTimeout(() => {el.show()}, 2000);
         }
         
     })

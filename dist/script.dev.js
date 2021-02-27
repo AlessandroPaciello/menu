@@ -108,6 +108,9 @@ function showElement() {
     } else {
       el.removeClass("hide");
       el.addClass("show");
+      setTimeout(function () {
+        el.show();
+      }, 2000);
     }
   });
 }
