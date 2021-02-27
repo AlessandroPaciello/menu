@@ -62,6 +62,7 @@ function setup() {
 ;
 
 function windowResized() {
+  voce;
   set_element(divCategory.list);
 }
 
@@ -88,6 +89,10 @@ function openElement(event) {
     } else if (divCategory.list.includes(el)) {
       el.removeClass("show");
       el.addClass("hide");
+      el.style("transition", "opacity " + 2 + "s");
+      setTimeout(function () {
+        el.hide();
+      }, 2000);
     } // chiusura foreach
 
   });

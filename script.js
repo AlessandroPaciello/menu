@@ -84,6 +84,8 @@ function openElement(event) {
             else if(divCategory.list.includes(el)){
                 el.removeClass("show");
                 el.addClass("hide");
+                el.style("transition", "opacity " + 2 + "s")
+                setTimeout(() => {el.hide()}, 2000)
             }
             // chiusura foreach
         });
