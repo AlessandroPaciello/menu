@@ -45,6 +45,10 @@ function setup() {
 
             ;
             set_element(divCategory.list);
+            header.mouseClicked(showElement);
+            divCategory.list.forEach(function (el) {
+              el.mouseClicked(openElement);
+            });
           }));
 
         case 3:
@@ -56,8 +60,6 @@ function setup() {
 }
 
 ;
-
-function draw() {}
 
 function windowResized() {
   set_element(divCategory.list);
@@ -75,28 +77,21 @@ function set_element(listElement) {
 
 ;
 
-function mouseClicked(event) {
+function openElement(event) {
   var padding = list_height * 75 / 100;
+  divCategory.list.forEach(function (el) {
+    if (event.target.id === el.elt.id) {
+      el.addClass("open_list");
+      el.removeClass("list_element");
+      el.style("padding-top", padding / 2 + "px");
+      el.style("padding-bottom", padding / 2 + "px");
+    } else if (divCategory.list.includes(el)) {
+      el.removeClass("show");
+      el.addClass("hide");
+    } // chiusura foreach
 
-  if (event.target.id === "id_header") {
-    showElement();
-  } else {
-    divCategory.list.forEach(function (el) {
-      if (event.target.id === el.elt.id) {
-        el.addClass("open_list");
-        el.removeClass("list_element");
-        el.style("padding-top", padding / 2 + "px");
-        el.style("padding-bottom", padding / 2 + "px");
-      } else if (divCategory.list.includes(el)) {
-        el.removeClass("show");
-        el.addClass("hide");
-      } // chiusura foreach
-
-    });
-  }
+  });
 }
-
-;
 
 function showElement() {
   divCategory.list.forEach(function (el) {

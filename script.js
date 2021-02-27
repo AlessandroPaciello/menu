@@ -37,18 +37,20 @@ async function setup() {
             list.child(div);
             divCategory.list[i] = div;
         };
-
         set_element(divCategory.list);
+
+        header.mouseClicked(showElement)
+
+        divCategory.list.forEach(el => {
+            el.mouseClicked(openElement)
+        })    
     });
     
 };
 
 
-function draw() {
-    
-}
 
-function windowResized() {
+function windowResized() {voce
     set_element(divCategory.list);
 }
 
@@ -68,13 +70,10 @@ function set_element(listElement) {
 };
 
 
-function mouseClicked(event) {
+function openElement(event) {
     let padding = (list_height * 75) / 100;
 
-    if (event.target.id === "id_header") {
-        showElement();
-    }
-    else {
+    
         divCategory.list.forEach(el => {
             if(event.target.id === el.elt.id){
                 el.addClass("open_list");
@@ -88,11 +87,7 @@ function mouseClicked(event) {
             }
             // chiusura foreach
         });
-    }
-   
-
-    
-};
+}
 
 function showElement() {
     divCategory.list.forEach(el => {
